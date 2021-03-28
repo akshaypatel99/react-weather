@@ -6,7 +6,7 @@ import { X } from 'react-feather';
 const Nav = ({ toggleNav }) => {
 	return (
 		<Navbar>
-			<X onClick={() => toggleNav(false)} />
+			<X className='nav__close' onClick={() => toggleNav(false)} />
 			<Link to='/'>
 				<h1>Search</h1>
 			</Link>
@@ -31,7 +31,7 @@ const Navbar = styled(motion.div)`
 	top: 0;
 	left: 0;
 	z-index: 10;
-	width: 25rem;
+	width: 20rem;
 	height: 100%;
 	padding: 2rem;
 	background: white;

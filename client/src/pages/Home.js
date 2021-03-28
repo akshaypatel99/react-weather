@@ -85,9 +85,12 @@ const Home = () => {
 		<StyledHome>
 			{pathDiv === 'daily' && pathId && <DailyDetail pathId={pathId} />}
 			{pathDiv === 'hourly' && pathId && <HourlyDetail pathId={pathId} />}
-			<Container>
+			{navbar && <Nav toggleNav={setNavbar} />}
+			<div className='home__nav'>
 				<Menu onClick={() => setNavbar(!navbar)} />
-				{navbar && <Nav toggleNav={setNavbar} />}
+			</div>
+
+			<Container>
 				<Banner>
 					<div className='logo__section'>
 						<h1>Weather Forecast</h1>
@@ -151,6 +154,13 @@ const Home = () => {
 const StyledHome = styled(motion.div)`
 	width: 100%;
 	height: 100vh;
+
+	.home__nav {
+		position: absolute;
+		top: 2rem;
+		left: 2rem;
+		cursor: pointer;
+	}
 `;
 
 const Container = styled(motion.div)`
@@ -167,7 +177,7 @@ const Container = styled(motion.div)`
 	}
 
 	@media (max-width: 500px) {
-		padding: 1rem 2rem;
+		padding: 2rem;
 	} ;
 `;
 

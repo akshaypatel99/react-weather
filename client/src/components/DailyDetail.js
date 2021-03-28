@@ -16,6 +16,7 @@ import {
 	LifeBuoy,
 	ChevronsLeft,
 	ChevronsRight,
+	X,
 } from 'react-feather';
 
 const DailyDetail = ({ pathId }) => {
@@ -53,6 +54,10 @@ const DailyDetail = ({ pathId }) => {
 							<div className='dailydtl__title'>
 								<h1>{formatDayDate(day.dt, timezoneOffset)}</h1>
 								<div className='line'></div>
+							</div>
+
+							<div className='dailydtl__close'>
+								<X onClick={() => history.push('/')} />
 							</div>
 
 							<div className='dailydtl'>
@@ -137,22 +142,17 @@ const DailyDetail = ({ pathId }) => {
 								</div>
 							</div>
 
-							<div className='dailydtl__nav'>
+							<div className='dailydtl__nav__prev'>
 								{index > 0 && (
 									<Link to={`/daily/${day.dt - 86400}`}>
-										<div className='prev'>
-											<ChevronsLeft />
-											<h5>Previous</h5>
-										</div>
+										<ChevronsLeft />
 									</Link>
 								)}
-
+							</div>
+							<div className='dailydtl__nav__next'>
 								{index < 7 && (
 									<Link to={`/daily/${day.dt + 86400}`}>
-										<div className='next'>
-											<h5>Next</h5>
-											<ChevronsRight />
-										</div>
+										<ChevronsRight />
 									</Link>
 								)}
 							</div>
@@ -202,6 +202,13 @@ const DayDetail = styled(motion.div)`
 			margin-top: 0.5rem;
 			background: hsl(191, 81%, 54%);
 		}
+	}
+
+	.dailydtl__close {
+		position: absolute;
+		top: 2rem;
+		right: 2rem;
+		cursor: pointer;
 	}
 
 	.dailydtl {
@@ -295,7 +302,7 @@ const DayDetail = styled(motion.div)`
 			display: flex;
 			width: 100%;
 			justify-content: space-around;
-			padding: 1rem 0rem;
+			padding: 0.5rem 0rem;
 
 			.temperatures,
 			.feels {
@@ -304,26 +311,16 @@ const DayDetail = styled(motion.div)`
 		}
 	}
 
-	.dailydtl__nav {
+	.dailydtl__nav__prev {
 		position: absolute;
-		bottom: 20px;
-		left: 20px;
-		right: 20px;
-		display: flex;
-		justify-content: space-between;
+		bottom: 1rem;
+		left: 2rem;
+	}
 
-		.next,
-		.prev {
-			display: flex;
-
-			h5 {
-				margin-top: 0.2rem;
-			}
-		}
-
-		a {
-			text-decoration: none;
-		}
+	.dailydtl__nav__next {
+		position: absolute;
+		bottom: 1rem;
+		right: 2rem;
 	}
 
 	@media (max-width: 1400px) {
@@ -434,7 +431,7 @@ const DayDetail = styled(motion.div)`
 			.por,
 			.humidity,
 			.pressure {
-				height: 64px;
+				height: 60px;
 
 				p {
 					font-size: 0.9rem;

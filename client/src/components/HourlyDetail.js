@@ -16,6 +16,7 @@ import {
 	LifeBuoy,
 	ChevronsLeft,
 	ChevronsRight,
+	X,
 } from 'react-feather';
 
 const HourlyDetail = ({ pathId }) => {
@@ -46,6 +47,10 @@ const HourlyDetail = ({ pathId }) => {
 						<div className='hourlydtl__title'>
 							<h1>{formatTime(detail.dt, timezoneOffset)}</h1>
 							<div className='line'></div>
+						</div>
+
+						<div className='hourlydtl__close'>
+							<X onClick={() => history.push('/')} />
 						</div>
 
 						<div className='hourlydtl'>
@@ -113,22 +118,17 @@ const HourlyDetail = ({ pathId }) => {
 							</div>
 						</div>
 
-						<div className='hourlydtl__nav'>
+						<div className='hourlydtl__nav__prev'>
 							{index > 0 && (
 								<Link to={`/hourly/${detail.dt - 3600}`}>
-									<div className='prev'>
-										<ChevronsLeft />
-										<h5>Previous</h5>
-									</div>
+									<ChevronsLeft />
 								</Link>
 							)}
-
+						</div>
+						<div className='hourlydtl__nav__next'>
 							{index < 47 && (
 								<Link to={`/hourly/${detail.dt + 3600}`}>
-									<div className='next'>
-										<h5>Next</h5>
-										<ChevronsRight />
-									</div>
+									<ChevronsRight />
 								</Link>
 							)}
 						</div>
@@ -177,6 +177,13 @@ const HourDetail = styled(motion.div)`
 			margin-top: 0.5rem;
 			background: hsl(191, 81%, 54%);
 		}
+	}
+
+	.hourlydtl__close {
+		position: absolute;
+		top: 2rem;
+		right: 2rem;
+		cursor: pointer;
 	}
 
 	.hourlydtl {
@@ -262,26 +269,16 @@ const HourDetail = styled(motion.div)`
 		}
 	}
 
-	.hourlydtl__nav {
+	.hourlydtl__nav__prev {
 		position: absolute;
-		bottom: 20px;
-		left: 20px;
-		right: 20px;
-		display: flex;
-		justify-content: space-between;
+		bottom: 1rem;
+		left: 2rem;
+	}
 
-		.next,
-		.prev {
-			display: flex;
-
-			h5 {
-				margin-top: 0.2rem;
-			}
-		}
-
-		a {
-			text-decoration: none;
-		}
+	.hourlydtl__nav__next {
+		position: absolute;
+		bottom: 1rem;
+		right: 2rem;
 	}
 
 	@media (max-width: 1400px) {
