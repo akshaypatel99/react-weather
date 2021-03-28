@@ -131,6 +131,14 @@ const StyledMinutely = styled(motion.div)`
 			background: hsl(191, 81%, 54%);
 		}
 	}
+
+	@media (max-width: 768px) {
+		.minutely__title {
+			.line {
+				width: 3.5rem;
+			}
+		}
+	}
 `;
 
 const MinutelyContainer = styled(motion.div)`

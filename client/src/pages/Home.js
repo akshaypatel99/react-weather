@@ -3,7 +3,7 @@ import { useLocation } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import styled from 'styled-components';
 import { motion } from 'framer-motion';
-import { Search, MapPin } from 'react-feather';
+import { Search, MapPin, Menu } from 'react-feather';
 
 import Current from '../components/Current';
 import Daily from '../components/Daily';
@@ -18,11 +18,13 @@ import {
 	getCoordsWeather,
 	getCityWeather,
 } from '../redux/actions/weatherActions';
+import Nav from '../components/Nav';
 
 const Home = () => {
 	const [city, setCity] = useState('');
 	const [geoLoading, setGeoLoading] = useState(false);
 	const [error, setError] = useState('');
+	const [navbar, setNavbar] = useState(false);
 	const isLoading = useSelector((state) => state.isLoading);
 	const weather = useSelector((state) => state.weather);
 
@@ -84,6 +86,8 @@ const Home = () => {
 			{pathDiv === 'daily' && pathId && <DailyDetail pathId={pathId} />}
 			{pathDiv === 'hourly' && pathId && <HourlyDetail pathId={pathId} />}
 			<Container>
+				<Menu onClick={() => setNavbar(!navbar)} />
+				{navbar && <Nav toggleNav={setNavbar} />}
 				<Banner>
 					<div className='logo__section'>
 						<h1>Weather Forecast</h1>
@@ -152,16 +156,34 @@ const StyledHome = styled(motion.div)`
 const Container = styled(motion.div)`
 	max-width: 1600px;
 	margin: 0 auto;
-	padding: 4rem 12rem;
+	padding: 4rem 10rem;
+
+	@media (max-width: 1200px) {
+		padding: 2rem 5rem;
+	}
+
+	@media (max-width: 768px) {
+		padding: 2rem 3rem;
+	}
+
+	@media (max-width: 500px) {
+		padding: 1rem 2rem;
+	} ;
 `;
 
 const Banner = styled(motion.div)`
 	display: flex;
-	align-items: flex-start;
+	flex-direction: column;
+	align-items: center;
 	justify-content: space-between;
 	margin-bottom: 2rem;
 
 	.logo__section {
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+		justify-content: center;
+
 		h1 {
 			font-size: 36px;
 		}
@@ -179,8 +201,8 @@ const Banner = styled(motion.div)`
 		flex-direction: column;
 		align-items: center;
 		justify-content: flex-end;
-		margin-top: 0.5rem;
-		border: 1px solid hsl(191, 81%, 54%);
+		margin-top: 10vh;
+		border: 2px solid hsl(191, 81%, 54%);
 		border-radius: 1rem;
 		box-shadow: 0 4px 6px hsla(0, 0%, 0%, 0);
 		padding: 2rem;
@@ -206,6 +228,20 @@ const Banner = styled(motion.div)`
 			h4 {
 				margin-left: 0.5rem;
 			}
+		}
+	}
+
+	@media (max-width: 768px) {
+		margin-bottom: 0rem;
+
+		.logo__section {
+			h1 {
+				font-size: 32px;
+			}
+		}
+		.search__section {
+			margin: 2rem auto;
+			padding: 1rem;
 		}
 	}
 `;
@@ -242,11 +278,21 @@ const SearchInput = styled(motion.div)`
 	button {
 		display: none;
 	}
+
+	@media (max-width: 500px) {
+		form {
+			padding: 0.5rem;
+		}
+
+		input {
+			min-width: 10rem;
+			font-size: 0.8rem;
+		}
+	}
 `;
 
 const Results = styled(motion.div)`
 	min-height: 50vh;
-	margin-top: 2rem;
 	display: flex;
 	flex-direction: column;
 	justify-content: center;

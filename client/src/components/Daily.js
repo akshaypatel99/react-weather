@@ -62,8 +62,8 @@ const Daily = () => {
 												</motion.div>
 											</motion.div>
 											<motion.div className='daily__temp'>
-												<motion.h2>{dp.temp.max.toFixed(1)}&#176;C</motion.h2>
-												<motion.h3>{dp.temp.min.toFixed(1)}&#176;C</motion.h3>
+												<motion.h2>{dp.temp.max.toFixed(0)}&#176;C</motion.h2>
+												<motion.h3>{dp.temp.min.toFixed(0)}&#176;C</motion.h3>
 											</motion.div>
 										</motion.div>
 									</Link>
@@ -89,16 +89,23 @@ const StyledDaily = styled(motion.div)`
 			background: hsl(191, 81%, 54%);
 		}
 	}
+
+	@media (max-width: 768px) {
+		.daily__title {
+			.line {
+				width: 3.5rem;
+			}
+		}
+	}
 `;
 
 const DailyContainer = styled(motion.div)`
-	display: grid;
-	grid-template-columns: repeat(auto-fit, minmax(272px, 1fr));
-	grid-template-rows: repeat(auto-fit, minmax(196px, 1fr));
-	grid-gap: 1rem;
+	display: flex;
+	overflow-y: hidden;
+	overflow-x: scroll;
+	width: 90%;
+	margin: 0 auto;
 	padding: 2rem;
-	justify-content: center;
-	align-items: center;
 `;
 
 const DailySummary = styled(motion.div)`
@@ -106,9 +113,9 @@ const DailySummary = styled(motion.div)`
 	border-radius: 1rem;
 	box-shadow: 0 1px 2px hsl(0, 0%, 0%, 0.15);
 	padding: 1.1rem;
-	max-width: 288px;
-	max-height: 196px;
-	margin-top: 1rem;
+	min-width: 272px;
+	min-height: 192px;
+	margin-right: 1rem;
 	display: flex;
 	flex-direction: column;
 	transition: all 0.2s ease-out;
@@ -171,6 +178,11 @@ const DailySummary = styled(motion.div)`
 		h2 {
 			padding-bottom: 0.5rem;
 		}
+	}
+
+	@media (max-width: 768px) {
+		min-width: 256px;
+		min-height: 176px;
 	}
 `;
 

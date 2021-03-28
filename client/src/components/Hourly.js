@@ -31,18 +31,14 @@ const Hourly = () => {
 					>
 						{hourly &&
 							hourly.map((dp) => (
-								<HourlySummary
-									key={dp.dt}
-									newDay={dp.dt}
-									variants={fadeInRight}
-								>
+								<HourlySummary key={dp.dt} variants={fadeInRight}>
 									<Link to={`/hourly/${dp.dt}`}>
-										<h3>{dp.temp.toFixed(1)}&#176;C</h3>
+										<h4>{formatTime(dp.dt, timezoneOffset)}</h4>
 										<img
 											src={convertIcon(dp.weather[0].icon)}
 											alt={dp.weather[0].main}
 										/>
-										<h3>{formatTime(dp.dt, timezoneOffset)}</h3>
+										<h4>{dp.temp.toFixed(1)}&#176;C</h4>
 									</Link>
 								</HourlySummary>
 							))}
@@ -54,7 +50,7 @@ const Hourly = () => {
 };
 
 const StyledHourly = styled(motion.div)`
-	margin-bottom: 2rem;
+	margin-bottom: 4rem;
 
 	.hourly__title {
 		margin-bottom: 2rem;
@@ -66,6 +62,14 @@ const StyledHourly = styled(motion.div)`
 			background: hsl(191, 81%, 54%);
 		}
 	}
+
+	@media (max-width: 768px) {
+		.hourly__title {
+			.line {
+				width: 3.5rem;
+			}
+		}
+	}
 `;
 
 const HourlyContainer = styled(motion.div)`
@@ -75,22 +79,18 @@ const HourlyContainer = styled(motion.div)`
 	width: 90%;
 	margin: 0 auto;
 	padding: 2rem;
-
-	/* ::-webkit-scrollbar {
-		width: 0.5rem;
-	} */
 `;
 
 const HourlySummary = styled(motion.div)`
 	border: 1px solid hsl(210, 16%, 76%);
 	border-radius: 1rem;
-	padding: 1.5rem;
+	padding: 1rem;
 	display: flex;
 	flex-direction: column;
-	justify-content: space-between;
+	justify-content: space-around;
 	object-fit: contain;
-	width: 85%;
-	height: 160px;
+	width: 112px;
+	height: 144px;
 	margin-right: 10px;
 	transition: transform 0.2s ease-out;
 	cursor: pointer;
@@ -101,7 +101,7 @@ const HourlySummary = styled(motion.div)`
 
 	/* Give yellow border on HourlySummary that reads 00:00 / 86400 seconds in a day */
 	${(props) => {
-		props.newDay % 86400 === 0 &&
+		props.key % 86400 === 0 &&
 			css`
 				border: 2px solid hsl(39, 91%, 74%);
 			`;
