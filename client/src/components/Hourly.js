@@ -38,7 +38,7 @@ const Hourly = () => {
 											src={convertIcon(dp.weather[0].icon)}
 											alt={dp.weather[0].main}
 										/>
-										<h4>{dp.temp.toFixed(1)}&#176;C</h4>
+										<h4>{Math.round(dp.temp)}&#176;C</h4>
 									</Link>
 								</HourlySummary>
 							))}
@@ -53,7 +53,7 @@ const StyledHourly = styled(motion.div)`
 	margin-bottom: 4rem;
 
 	.hourly__title {
-		margin-bottom: 2rem;
+		margin-bottom: 1rem;
 
 		.line {
 			width: 5rem;
@@ -80,9 +80,15 @@ const HourlyContainer = styled(motion.div)`
 	display: flex;
 	overflow-y: hidden;
 	overflow-x: scroll;
-	width: 90%;
+	width: 100%;
 	margin: 0 auto;
 	padding: 2rem;
+
+	@media (max-width: 500px) {
+		::-webkit-scrollbar {
+			display: none;
+		}
+	}
 `;
 
 const HourlySummary = styled(motion.div)`
@@ -91,7 +97,9 @@ const HourlySummary = styled(motion.div)`
 	padding: 1rem;
 	display: flex;
 	flex-direction: column;
+	align-items: center;
 	justify-content: space-around;
+	text-align: center;
 	object-fit: contain;
 	width: 112px;
 	height: 144px;
@@ -115,6 +123,10 @@ const HourlySummary = styled(motion.div)`
 		transform: scale(1.15);
 		border-top: 5px solid hsl(191, 81%, 54%);
 		box-shadow: 0 5px 10px hsl(0, 0%, 0%, 0.15);
+	}
+
+	@media (max-width: 500px) {
+		box-shadow: 0 5px 10px hsl(0, 0%, 0%, 0.2);
 	}
 `;
 

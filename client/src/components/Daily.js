@@ -62,8 +62,8 @@ const Daily = () => {
 												</motion.div>
 											</motion.div>
 											<motion.div className='daily__temp'>
-												<motion.h2>{dp.temp.max.toFixed(0)}&#176;C</motion.h2>
-												<motion.h3>{dp.temp.min.toFixed(0)}&#176;C</motion.h3>
+												<motion.h2>{Math.round(dp.temp.max)}&#176;C</motion.h2>
+												<motion.h3>{Math.round(dp.temp.min)}&#176;C</motion.h3>
 											</motion.div>
 										</motion.div>
 									</Link>
@@ -80,7 +80,7 @@ const StyledDaily = styled(motion.div)`
 	margin-bottom: 4rem;
 
 	.daily__title {
-		margin-bottom: 2rem;
+		margin-bottom: 1rem;
 
 		.line {
 			width: 5rem;
@@ -107,9 +107,15 @@ const DailyContainer = styled(motion.div)`
 	display: flex;
 	overflow-y: hidden;
 	overflow-x: scroll;
-	width: 90%;
+	width: 100%;
 	margin: 0 auto;
 	padding: 2rem;
+
+	@media (max-width: 500px) {
+		::-webkit-scrollbar {
+			display: none;
+		}
+	}
 `;
 
 const DailySummary = styled(motion.div)`
@@ -117,7 +123,7 @@ const DailySummary = styled(motion.div)`
 	border-radius: 1rem;
 	box-shadow: 0 1px 2px hsl(0, 0%, 0%, 0.15);
 	padding: 1.1rem;
-	min-width: 272px;
+	min-width: 278px;
 	min-height: 192px;
 	margin-right: 1rem;
 	display: flex;
@@ -132,7 +138,7 @@ const DailySummary = styled(motion.div)`
 	:hover {
 		border-top: 5px solid hsl(191, 81%, 54%);
 		box-shadow: 0 5px 15px hsl(0, 0%, 0%, 0.2);
-		transform: translateY(10px);
+		transform: translateY(20px);
 	}
 
 	.daily__top {
@@ -187,6 +193,10 @@ const DailySummary = styled(motion.div)`
 	@media (max-width: 768px) {
 		min-width: 256px;
 		min-height: 176px;
+	}
+
+	@media (max-width: 500px) {
+		box-shadow: 0 5px 15px hsl(0, 0%, 0%, 0.2);
 	}
 `;
 

@@ -40,7 +40,7 @@ const Current = ({ city }) => {
 
 								<motion.div className='current__weather'>
 									<motion.h1>
-										<motion.span>{current.temp.toFixed(0)}</motion.span>&#176;C
+										<motion.span>{Math.round(current.temp)}</motion.span>&#176;C
 									</motion.h1>
 									<motion.img
 										src={convertIcon(current.weather[0].icon)}
@@ -52,15 +52,19 @@ const Current = ({ city }) => {
 									<motion.div className='feels__like'>
 										<motion.p>Feels like </motion.p>
 										<motion.h4>
-											{current.feels_like.toFixed(0)}&#176;C
+											{Math.round(current.feels_like)}&#176;C
 										</motion.h4>
 									</motion.div>
 
 									<motion.div className='high__low'>
 										<motion.p>High: </motion.p>
-										<motion.h4>{daily[0].temp.max.toFixed(0)}&#176;C</motion.h4>
+										<motion.h4>
+											{Math.round(daily[0].temp.max)}&#176;C
+										</motion.h4>
 										<motion.p>Low: </motion.p>
-										<motion.h4>{daily[0].temp.min.toFixed(0)}&#176;C</motion.h4>
+										<motion.h4>
+											{Math.round(daily[0].temp.min)}&#176;C
+										</motion.h4>
 									</motion.div>
 								</div>
 							</motion.div>
@@ -176,11 +180,6 @@ const CurrentContainer = styled(motion.div)`
 	}
 
 	.current__left {
-		/* display: grid;
-		grid-template-columns: repeat(auto-fit, minmax(192px, 1fr));
-		grid-template-rows: repeat(auto-fit, minmax(128px, 1fr));
-		align-items: center;
-		margin-bottom: 2rem; */
 		display: flex;
 		flex-direction: column;
 		align-items: space-between;
@@ -236,13 +235,6 @@ const CurrentContainer = styled(motion.div)`
 	}
 
 	.current__extra {
-		/* display: grid;
-		grid-template-columns: repeat(auto-fit, minmax(256px, 1fr));
-		grid-template-rows: repeat(auto-fit, minmax(64px, 1fr));
-		grid-column-gap: 1rem;
-		grid-row-gap: 2rem;
-		align-items: center;
-		justify-content: center; */
 		display: flex;
 		flex-wrap: wrap;
 

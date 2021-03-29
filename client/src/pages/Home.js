@@ -124,9 +124,9 @@ const Home = () => {
 								</form>
 							</SearchInput>
 							<p>
-								For greater accuracy, enter your postcode, city and country:
+								For best results, enter your postcode, city and country: e.g. N1
+								London UK.
 							</p>
-							<p>e.g. N1 London UK.</p>
 						</div>
 					</div>
 				</Banner>

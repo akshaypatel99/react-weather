@@ -71,8 +71,8 @@ const DailyDetail = ({ pathId }) => {
 									</div>
 
 									<div className='dailydtl__left__temp'>
-										<h1>{day.temp.max.toFixed(0)}&#176;C</h1>
-										<h2>{day.temp.min.toFixed(0)}&#176;C</h2>
+										<h1>{Math.round(day.temp.max)}&#176;C</h1>
+										<h2>{Math.round(day.temp.min)}&#176;C</h2>
 									</div>
 								</div>
 								<div className='dailydtl__right'>
@@ -475,6 +475,11 @@ const DayDetail = styled(motion.div)`
 					font-size: 1rem;
 				}
 			}
+		}
+
+		.dailydtl__right {
+			width: 90%;
+			margin: 0 auto;
 		}
 
 		.dailydtl__right__icons {

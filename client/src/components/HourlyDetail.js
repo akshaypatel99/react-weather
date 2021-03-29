@@ -64,7 +64,7 @@ const HourlyDetail = ({ pathId }) => {
 										src={convertIcon(detail.weather[0].icon)}
 										alt={detail.weather[0].main}
 									/>
-									<h1>{detail.temp.toFixed(0)}&#176;C</h1>
+									<h1>{Math.round(detail.temp)}&#176;C</h1>
 								</div>
 							</div>
 							<div className='hourlydtl__right'>
@@ -426,6 +426,21 @@ const HourDetail = styled(motion.div)`
 				p {
 					font-size: 0.8rem;
 				}
+			}
+		}
+	}
+
+	@media (max-height: 700px) {
+		.hourlydtl__right__icons {
+			.wind,
+			.uvIndex,
+			.cloud,
+			.por,
+			.humidity,
+			.pressure,
+			.visibility,
+			.feels {
+				height: 44px;
 			}
 		}
 	}

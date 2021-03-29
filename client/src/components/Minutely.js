@@ -147,6 +147,7 @@ const MinutelyContainer = styled(motion.div)`
 	padding: 1.5rem;
 	border: 1px solid hsl(210, 16%, 76%);
 	border-radius: 1rem;
+	margin: 0 auto;
 
 	::-webkit-scrollbar {
 		display: none;
