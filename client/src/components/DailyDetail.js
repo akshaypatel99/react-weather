@@ -504,6 +504,8 @@ const DayDetail = styled(motion.div)`
 	}
 
 	@media (max-height: 700px) {
+		min-height: 0px;
+
 		.dailydtl__right__icons {
 			.temp__feel {
 				display: none;
