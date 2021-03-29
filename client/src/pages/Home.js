@@ -3,7 +3,7 @@ import { useLocation } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import styled from 'styled-components';
 import { motion } from 'framer-motion';
-import { Search, MapPin, Menu } from 'react-feather';
+import { Search, MapPin } from 'react-feather';
 
 import Current from '../components/Current';
 import Daily from '../components/Daily';
@@ -18,13 +18,11 @@ import {
 	getCoordsWeather,
 	getCityWeather,
 } from '../redux/actions/weatherActions';
-import Nav from '../components/Nav';
 
 const Home = () => {
 	const [city, setCity] = useState('');
 	const [geoLoading, setGeoLoading] = useState(false);
 	const [error, setError] = useState('');
-	const [navbar, setNavbar] = useState(false);
 	const isLoading = useSelector((state) => state.isLoading);
 	const weather = useSelector((state) => state.weather);
 
@@ -85,10 +83,6 @@ const Home = () => {
 		<StyledHome>
 			{pathDiv === 'daily' && pathId && <DailyDetail pathId={pathId} />}
 			{pathDiv === 'hourly' && pathId && <HourlyDetail pathId={pathId} />}
-			{navbar && <Nav toggleNav={setNavbar} />}
-			<div className='home__nav'>
-				<Menu onClick={() => setNavbar(!navbar)} />
-			</div>
 
 			<Container>
 				<Banner>
