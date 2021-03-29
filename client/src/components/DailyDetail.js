@@ -180,17 +180,17 @@ const CardShadow = styled(motion.div)`
 `;
 
 const DayDetail = styled(motion.div)`
-	width: 84%;
-	min-height: 90vh;
-	margin: 0 auto;
+	width: 90%;
+	min-height: 690px;
 	border-radius: 1rem;
 	padding: 2rem 10rem;
 	background: white;
 	position: absolute;
-	top: 2rem;
+	margin: auto;
+	top: 50%;
+	transform: translateY(-50%);
 	left: 0;
 	right: 0;
-	bottom: 2rem;
 	z-index: 10;
 	border: 3px solid hsl(191, 81%, 54%);
 
@@ -209,8 +209,8 @@ const DayDetail = styled(motion.div)`
 
 	.dailydtl__close {
 		position: absolute;
-		top: 2rem;
-		right: 2rem;
+		top: 1rem;
+		right: 1rem;
 		cursor: pointer;
 	}
 
@@ -404,8 +404,14 @@ const DayDetail = styled(motion.div)`
 	}
 
 	@media (max-width: 768px) {
+		.dailydtl__title {
+			.line {
+				width: 3rem;
+			}
+		}
+
 		.dailydtl__left {
-			min-height: 10rem;
+			min-height: 170px;
 
 			&__weather {
 				img {
@@ -448,6 +454,29 @@ const DayDetail = styled(motion.div)`
 	}
 
 	@media (max-width: 500px) {
+		padding: 1.5rem;
+
+		.dailydtl__left {
+			&__temp {
+				margin-left: 0.5rem;
+
+				h1 {
+					font-size: 2.8rem;
+				}
+
+				h2 {
+					font-size: 1.8rem;
+				}
+			}
+
+			&__weather {
+				padding: 0.5rem;
+				h3 {
+					font-size: 1rem;
+				}
+			}
+		}
+
 		.dailydtl__right__icons {
 			.sunrise,
 			.sunset,
@@ -457,7 +486,7 @@ const DayDetail = styled(motion.div)`
 			.por,
 			.humidity,
 			.pressure {
-				height: 48px;
+				height: 44px;
 
 				p {
 					font-size: 0.8rem;
@@ -470,6 +499,14 @@ const DayDetail = styled(motion.div)`
 				p {
 					font-size: 0.8rem;
 				}
+			}
+		}
+	}
+
+	@media (max-height: 700px) {
+		.dailydtl__right__icons {
+			.temp__feel {
+				display: none;
 			}
 		}
 	}

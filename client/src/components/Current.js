@@ -140,9 +140,13 @@ const StyledCurrent = styled(motion.div)`
 	@media (max-width: 768px) {
 		.currently__title {
 			.line {
-				width: 3.5rem;
+				width: 3rem;
 			}
 		}
+	}
+
+	@media (max-width: 500px) {
+		margin-bottom: 2rem;
 	}
 `;
 
@@ -332,7 +336,7 @@ const CurrentContainer = styled(motion.div)`
 
 		h4,
 		p {
-			font-size: 1rem;
+			font-size: 0.9rem;
 		}
 
 		.current__weather {

@@ -135,7 +135,7 @@ const StyledMinutely = styled(motion.div)`
 	@media (max-width: 768px) {
 		.minutely__title {
 			.line {
-				width: 3.5rem;
+				width: 3rem;
 			}
 		}
 	}

@@ -155,17 +155,16 @@ const CardShadow = styled(motion.div)`
 `;
 
 const HourDetail = styled(motion.div)`
-	width: 84%;
-	min-height: 60vh;
-	margin: 0 auto;
+	width: 90%;
 	border-radius: 1rem;
 	padding: 2rem 10rem;
 	background: white;
 	position: absolute;
-	top: 4%;
+	margin: auto;
+	top: 50%;
+	transform: translateY(-50%);
 	left: 0;
 	right: 0;
-	bottom: 4%;
 	z-index: 10;
 	border: 3px solid hsl(191, 81%, 54%);
 
@@ -184,8 +183,8 @@ const HourDetail = styled(motion.div)`
 
 	.hourlydtl__close {
 		position: absolute;
-		top: 2rem;
-		right: 2rem;
+		top: 1rem;
+		right: 1rem;
 		cursor: pointer;
 	}
 
@@ -235,6 +234,7 @@ const HourDetail = styled(motion.div)`
 		justify-content: center;
 		flex: 1;
 		margin-left: 4rem;
+		margin-bottom: 2rem;
 	}
 
 	.hourlydtl__right__icons {
@@ -354,6 +354,11 @@ const HourDetail = styled(motion.div)`
 	}
 
 	@media (max-width: 768px) {
+		.hourlydtl__title {
+			.line {
+				width: 3rem;
+			}
+		}
 		.hourlydtl__left {
 			min-height: 10rem;
 
@@ -395,6 +400,18 @@ const HourDetail = styled(motion.div)`
 	}
 
 	@media (max-width: 500px) {
+		padding: 1.5rem;
+
+		.hourlydtl__left {
+			width: 100%;
+
+			&__desc {
+				h3 {
+					font-size: 1.2rem;
+				}
+			}
+		}
+
 		.hourlydtl__right__icons {
 			.wind,
 			.uvIndex,

@@ -87,7 +87,7 @@ const Home = () => {
 			<Container>
 				<Banner>
 					<div className='logo__section'>
-						<h1>Weather Forecast</h1>
+						<h1>The Weather</h1>
 						<motion.div
 							className='line'
 							variants={lineFade}
