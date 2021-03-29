@@ -114,7 +114,11 @@ const Home = () => {
 										value={city}
 										onChange={cityHandler}
 									/>
-									<button onClick={weatherHandler} type='submit'>
+									<button
+										onClick={weatherHandler}
+										onTouchStart={weatherHandler}
+										type='submit'
+									>
 										Get Weather
 									</button>
 								</form>
