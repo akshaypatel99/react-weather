@@ -180,14 +180,17 @@ const CardShadow = styled(motion.div)`
 `;
 
 const DayDetail = styled(motion.div)`
-	width: 80%;
-	min-height: 80vh;
+	width: 84%;
+	min-height: 90vh;
+	margin: 0 auto;
 	border-radius: 1rem;
 	padding: 2rem 10rem;
 	background: white;
 	position: absolute;
-	top: 5%;
-	left: 10%;
+	top: 2rem;
+	left: 0;
+	right: 0;
+	bottom: 2rem;
 	z-index: 10;
 	border: 3px solid hsl(191, 81%, 54%);
 
@@ -306,7 +309,7 @@ const DayDetail = styled(motion.div)`
 
 			.temperatures,
 			.feels {
-				min-width: 160px;
+				min-width: 120px;
 			}
 		}
 	}
@@ -314,13 +317,13 @@ const DayDetail = styled(motion.div)`
 	.dailydtl__nav__prev {
 		position: absolute;
 		bottom: 1rem;
-		left: 2rem;
+		left: 1rem;
 	}
 
 	.dailydtl__nav__next {
 		position: absolute;
 		bottom: 1rem;
-		right: 2rem;
+		right: 1rem;
 	}
 
 	@media (max-width: 1400px) {
@@ -368,10 +371,12 @@ const DayDetail = styled(motion.div)`
 		}
 
 		.dailydtl__right {
-			margin-left: 0rem;
+			width: 100%;
+			margin: 0 auto;
 		}
 
 		.dailydtl__right__icons {
+			width: 100%;
 			margin-top: 1rem;
 			& > * {
 				flex: 1 1 128px;
@@ -400,6 +405,8 @@ const DayDetail = styled(motion.div)`
 
 	@media (max-width: 768px) {
 		.dailydtl__left {
+			min-height: 10rem;
+
 			&__weather {
 				img {
 					height: 8rem;
@@ -435,6 +442,33 @@ const DayDetail = styled(motion.div)`
 
 				p {
 					font-size: 0.9rem;
+				}
+			}
+		}
+	}
+
+	@media (max-width: 500px) {
+		.dailydtl__right__icons {
+			.sunrise,
+			.sunset,
+			.wind,
+			.uvIndex,
+			.cloud,
+			.por,
+			.humidity,
+			.pressure {
+				height: 48px;
+
+				p {
+					font-size: 0.8rem;
+				}
+			}
+
+			.temp__feel {
+				justify-content: center;
+				h3,
+				p {
+					font-size: 0.8rem;
 				}
 			}
 		}

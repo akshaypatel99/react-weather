@@ -155,14 +155,17 @@ const CardShadow = styled(motion.div)`
 `;
 
 const HourDetail = styled(motion.div)`
-	width: 80%;
+	width: 84%;
 	min-height: 60vh;
+	margin: 0 auto;
 	border-radius: 1rem;
 	padding: 2rem 10rem;
 	background: white;
 	position: absolute;
-	top: 10%;
-	left: 10%;
+	top: 4%;
+	left: 0;
+	right: 0;
+	bottom: 4%;
 	z-index: 10;
 	border: 3px solid hsl(191, 81%, 54%);
 
@@ -272,13 +275,13 @@ const HourDetail = styled(motion.div)`
 	.hourlydtl__nav__prev {
 		position: absolute;
 		bottom: 1rem;
-		left: 2rem;
+		left: 1rem;
 	}
 
 	.hourlydtl__nav__next {
 		position: absolute;
 		bottom: 1rem;
-		right: 2rem;
+		right: 1rem;
 	}
 
 	@media (max-width: 1400px) {
@@ -352,6 +355,8 @@ const HourDetail = styled(motion.div)`
 
 	@media (max-width: 768px) {
 		.hourlydtl__left {
+			min-height: 10rem;
+
 			&__weather {
 				width: 100%;
 
@@ -384,6 +389,29 @@ const HourDetail = styled(motion.div)`
 
 				p {
 					font-size: 0.9rem;
+				}
+			}
+		}
+	}
+
+	@media (max-width: 500px) {
+		.dailydtl__right__icons {
+			& > * {
+				flex: 1 1 104px;
+			}
+
+			.wind,
+			.uvIndex,
+			.cloud,
+			.por,
+			.humidity,
+			.pressure,
+			.visibility,
+			.feels {
+				height: 48px;
+
+				p {
+					font-size: 0.8rem;
 				}
 			}
 		}
