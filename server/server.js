@@ -1,4 +1,5 @@
 import express from 'express';
+import path from 'path';
 import dotenv from 'dotenv';
 import morgan from 'morgan';
 import { notFound, errorHandler } from './middleware/error.js';
@@ -18,9 +19,18 @@ app.use(morgan('dev'));
 
 app.use('/api/weather', weatherRoutes);
 
-app.get('/', (req, res, next) => {
-	res.send('API is running...');
-});
+if (process.env.NODE_ENV === 'production') {
+	const __dirname = path.resolve();
+	app.use(express.static(path.join(__dirname, '/client/build')));
+
+	app.get('*', (req, res, next) =>
+		res.sendFile(path.resolve(__dirname, 'client', 'build', 'index.html'))
+	);
+} else {
+	app.get('/', (req, res, next) => {
+		res.send('API is running...');
+	});
+}
 
 app.use(notFound);
 
