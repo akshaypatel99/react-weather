@@ -395,11 +395,7 @@ const HourDetail = styled(motion.div)`
 	}
 
 	@media (max-width: 500px) {
-		.dailydtl__right__icons {
-			& > * {
-				flex: 1 1 104px;
-			}
-
+		.hourlydtl__right__icons {
 			.wind,
 			.uvIndex,
 			.cloud,
