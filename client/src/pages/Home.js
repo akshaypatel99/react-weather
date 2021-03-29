@@ -105,7 +105,7 @@ const Home = () => {
 						<h5>OR</h5>
 						<div className='search__form'>
 							<SearchInput>
-								<form>
+								<form onSubmit={weatherHandler}>
 									<Search color='#999' size={18} />
 									<input
 										name='city'
